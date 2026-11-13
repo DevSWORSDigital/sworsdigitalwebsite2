@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Atelier Nova — Arquitetura em essência</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: #ede9e1;
+        color: #292b26;
+        font-family: Inter, Arial, sans-serif;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button {
+        font: inherit;
+        cursor: pointer;
+      }
+      .wrap {
+        max-width: 1350px;
+        width: calc(100% - 100px);
+        margin: auto;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px 0;
+        gap: 20px;
+      }
+      header strong {
+        font-weight: 600;
+        font-size: 23px;
+        letter-spacing: -0.065em;
+      }
+      header strong i {
+        font-style: normal;
+        color: #a78964;
+      }
+      header nav {
+        display: flex;
+        gap: 38px;
+        font-size: 11px;
+        letter-spacing: 0.09em;
+      }
+      header > a {
+        font-size: 11px;
+        border-bottom: 1px solid #333;
+        padding-bottom: 8px;
+      }
+      .hero {
+        position: relative;
+        min-height: 665px;
+        overflow: hidden;
+        background: #bcb5a6 url("../../art/architecture.svg") center/cover;
+      }
+      .hero:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, #121d1b99, transparent 68%),
+          linear-gradient(0deg, #16211a6a, transparent 55%);
+      }
+      .hero-copy {
+        position: relative;
+        z-index: 1;
+        padding: 130px 0 90px;
+        color: #fff;
+      }
+      .eyebrow {
+        font-size: 10px;
+        letter-spacing: 0.25em;
+        font-weight: 600;
+      }
+      .hero h1 {
+        font-weight: 400;
+        font-size: clamp(60px, 9vw, 128px);
+        letter-spacing: -0.09em;
+        line-height: 0.98;
+        margin: 30px 0;
+      }
+      .hero h1 em {
+        font-family: Georgia, serif;
+        font-weight: 400;
+      }
+      .hero p {
+        max-width: 420px;
+        font-size: 14px;
+        line-height: 1.8;
+        color: #e9e2d7;
+      }
+      .round-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 20px;
+        border: 1px solid #ffffffaa;
+        padding: 16px 23px;
+        font-size: 12px;
+        margin-top: 28px;
+        transition: background 0.2s;
+      }
+      .round-link:hover {
+        background: #ffffff27;
+      }
+      .section {
+        padding: 110px 0;
+      }
+      .intro {
+        display: grid;
+        grid-template-columns: 1fr 1.3fr;
+        gap: 9%;
+      }
+      .intro > span,
+      .projects > span {
+        font-size: 11px;
+        letter-spacing: 0.19em;
+        color: #846f59;
+      }
+      .intro h2,
+      .projects h2 {
+        font-size: clamp(35px, 5vw, 72px);
+        line-height: 1.15;
+        font-weight: 400;
+        letter-spacing: -0.075em;
+        margin: 0;
+      }
+      .intro h2 em,
+      .projects h2 em {
+        font-family: Georgia, serif;
+        font-weight: 400;
+      }
+      .intro p {
+        font-size: 15px;
+        line-height: 1.95;
+        color: #75756e;
+        max-width: 580px;
+      }
+      .projects {
+        background: #d9d4ca;
+      }
+      .projects-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 20px;
+      }
+      .projects-head > p {
+        font-size: 12px;
+        max-width: 270px;
+        line-height: 1.9;
+        color: #6d6b66;
+      }
+      .project-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+        margin-top: 55px;
+      }
+      .project-photo {
+        height: 350px;
+        background: url("../../art/architecture.svg") center/cover;
+      }
+      .project-photo.alt {
+        background:
+          linear-gradient(130deg, #4a4f46a0, #89847630),
+          url("../../art/architecture.svg") 30% / cover;
+        filter: saturate(0.6);
+      }
+      .project-grid h3 {
+        font-size: 23px;
+        font-weight: 500;
+        letter-spacing: -0.04em;
+        margin: 23px 0 8px;
+      }
+      .project-grid p {
+        font-size: 12px;
+        color: #7c796f;
+        margin: 0;
+      }
+      .quote {
+        background: #272b27;
+        color: #eee9df;
+        padding: 115px 0;
+      }
+      .quote h2 {
+        font-size: clamp(42px, 6vw, 80px);
+        line-height: 1.17;
+        letter-spacing: -0.065em;
+        font-weight: 400;
+        max-width: 990px;
+        margin: 20px 0 32px;
+      }
+      .quote h2 em {
+        font-family: Georgia, serif;
+        font-weight: 400;
+      }
+      .quote a {
+        display: inline-flex;
+        padding: 15px 22px;
+        border: 1px solid #c6c2ba;
+        font-size: 12px;
+      }
+      footer {
+        padding: 35px 0;
+        display: flex;
+        justify-content: space-between;
+        font-size: 11px;
+        color: #72746d;
+      }
+      #mobileMenu {
+        display: none;
+      }
+      @media (max-width: 700px) {
+        .wrap {
+          width: calc(100% - 38px);
+        }
+        header {
+          padding: 23px 0;
+        }
+        header nav {
+          display: none;
+        }
+        header > a {
+          font-size: 10px;
+        }
+        .hero {
+          min-height: 600px;
+        }
+        .hero-copy {
+          padding: 105px 0;
+        }
+        .hero h1 {
+          font-size: 65px;
+        }
+        .section {
+          padding: 75px 0;
+        }
+        .intro {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+        .projects-head {
+          align-items: start;
+          flex-direction: column;
+        }
+        .project-grid {
+          grid-template-columns: 1fr;
+        }
+        .project-photo {
+          height: 300px;
+        }
+        .quote {
+          padding: 85px 0;
+        }
+        .quote h2 {
+          font-size: 45px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <strong>atelier<i>.</i>nova</strong>
+        <nav>
+          <a href="#inicio">INÍCIO</a><a href="#studio">ESTÚDIO</a
+          ><a href="#projetos">PROJETOS</a>
+        </nav>
+        <a href="#contato">VAMOS CONVERSAR ↗</a>
+      </header>
+    </div>
+    <section id="inicio" class="hero">
+      <div class="wrap hero-copy">
+        <span class="eyebrow">ATELIER NOVA / ARQUITETURA AUTORAL</span>
+        <h1>Espaços<br />para <em>sentir.</em></h1>
+        <p>
+          Projetamos atmosferas onde matéria, luz e arquitetura encontram novas
+          formas de existir.
+        </p>
+        <a class="round-link" href="#projetos"
+          >EXPLORAR PROJETOS <span>↗</span></a
+        >
+      </div>
+    </section>
+    <section id="studio" class="section">
+      <div class="wrap intro">
+        <span>01 / NOSSA FILOSOFIA</span>
+        <div>
+          <h2>O essencial é<br /><em>extraordinário.</em></h2>
+          <p>
+            Construímos narrativas espaciais que valorizam a simplicidade, as
+            texturas naturais e a relação entre pessoas e ambientes. Cada
+            projeto nasce de uma escuta atenta e de um olhar sensível para o
+            detalhe.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section id="projetos" class="section projects">
+      <div class="wrap">
+        <div class="projects-head">
+          <div>
+            <span>02 / PROJETOS SELECIONADOS</span>
+            <h2>Arquitetura que<br /><em>permanece.</em></h2>
+          </div>
+          <p>
+            Duas explorações de forma, proporção e luz. Conceitos de arquitetura
+            apresentados para demonstrar esta experiência web.
+          </p>
+        </div>
+        <div class="project-grid">
+          <article>
+            <div class="project-photo"></div>
+            <h3>Casa Horizonte</h3>
+            <p>RESIDENCIAL / CONCEITO 2026</p>
+          </article>
+          <article>
+            <div class="project-photo alt"></div>
+            <h3>Morada Essencial</h3>
+            <p>RESIDENCIAL / CONCEITO 2026</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section id="contato" class="quote">
+      <div class="wrap">
+        <span class="eyebrow">03 / UMA NOVA CONVERSA</span>
+        <h2>
+          Se o espaço transforma a vida, <em>o projeto transforma o espaço.</em>
+        </h2>
+        <a
+          href="mailto:contato@example.invalid?subject=Atelier%20Nova%20-%20conceito"
+          >PROJETO CONCEITUAL — SEM CONTATO COMERCIAL ↗</a
+        >
+      </div>
+    </section>
+    <div class="wrap">
+      <footer>
+        <strong>atelier.nova © 2026</strong
+        ><span>CONCEITO DEMONSTRATIVO • SWORS DIGITAL</span>
+      </footer>
+    </div>
+  </body>
+</html>

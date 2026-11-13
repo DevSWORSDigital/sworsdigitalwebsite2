@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Modus® — Independent Creative Studio</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: #071426;
+        color: white;
+        margin: 0;
+        font-family: Inter, Arial, sans-serif;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button {
+        cursor: pointer;
+      }
+      .wrap {
+        width: calc(100% - 100px);
+        max-width: 1350px;
+        margin: auto;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 29px 0;
+      }
+      header strong {
+        font-size: 29px;
+        font-weight: 750;
+        letter-spacing: -0.09em;
+      }
+      header strong span {
+        color: #86d0f6;
+      }
+      header nav {
+        display: flex;
+        gap: 38px;
+        font-size: 12px;
+        color: #b1bed0;
+      }
+      header nav a:hover {
+        color: white;
+      }
+      header > a {
+        border: 1px solid #55738e;
+        padding: 13px 20px;
+        font-size: 11px;
+      }
+      .eyebrow {
+        font-size: 10px;
+        letter-spacing: 0.21em;
+        color: #95c7e8;
+      }
+      .hero {
+        position: relative;
+        min-height: 730px;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        background: radial-gradient(circle at 76% 43%, #235b80, #061327 57%);
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0.22;
+        background-image:
+          linear-gradient(#ffffff16 1px, transparent 1px),
+          linear-gradient(90deg, #ffffff16 1px, transparent 1px);
+        background-size: 75px 75px;
+      }
+      .hero-copy {
+        position: relative;
+        z-index: 2;
+        padding: 85px 0;
+      }
+      .hero h1 {
+        font-size: clamp(72px, 10vw, 155px);
+        line-height: 0.96;
+        letter-spacing: -0.092em;
+        font-weight: 700;
+        margin: 32px 0;
+        max-width: 900px;
+      }
+      .hero h1 em {
+        font-style: normal;
+        color: #82c8f4;
+      }
+      .hero p {
+        font-size: 15px;
+        line-height: 1.8;
+        color: #b6c9d8;
+        max-width: 470px;
+      }
+      .hero a {
+        border-bottom: 1px solid #b5d5eb;
+        display: inline-block;
+        padding: 16px 0;
+        margin-top: 20px;
+        font-size: 12px;
+      }
+      .hero-art {
+        position: absolute;
+        width: 60%;
+        height: 95%;
+        right: -13%;
+        top: 4%;
+        z-index: 1;
+        background: url("../../art/modus.svg") center/contain no-repeat;
+        mix-blend-mode: screen;
+        transform: rotate(-10deg);
+        animation: float 8s ease-in-out infinite;
+      }
+      .section {
+        padding: 115px 0;
+      }
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12%;
+        align-items: start;
+      }
+      .split h2,
+      .works h2,
+      .end h2 {
+        font-size: clamp(48px, 6.4vw, 92px);
+        line-height: 1.1;
+        letter-spacing: -0.075em;
+        font-weight: 600;
+        margin: 20px 0;
+      }
+      .split p {
+        font-size: 15px;
+        color: #99aabf;
+        line-height: 1.95;
+      }
+      .works {
+        background: #0f2542;
+      }
+      .works h2 em {
+        font-style: normal;
+        color: #81c9f3;
+      }
+      .workcards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        margin-top: 55px;
+      }
+      .workcards article > div {
+        height: 330px;
+        background: #1c4770 url("../../art/modus.svg") center/cover;
+      }
+      .workcards article:nth-child(2) > div {
+        background: #1c4770 url("../../art/orbit.svg") center/cover;
+        filter: saturate(0.55);
+      }
+      .workcards h3 {
+        font-size: 22px;
+        letter-spacing: -0.05em;
+        margin: 20px 0 10px;
+      }
+      .workcards p {
+        color: #9dacbf;
+        font-size: 12px;
+      }
+      .end {
+        background: #b9dffc;
+        color: #0c2440;
+      }
+      .end h2 {
+        font-size: clamp(50px, 7vw, 105px);
+      }
+      .end a {
+        display: inline-block;
+        padding: 18px 22px;
+        background: #071426;
+        color: white;
+        font-size: 12px;
+        margin-top: 15px;
+      }
+      footer {
+        display: flex;
+        justify-content: space-between;
+        padding: 30px 0;
+        font-size: 11px;
+        color: #7d9bb9;
+      }
+      @keyframes float {
+        50% {
+          transform: translateY(-28px) rotate(-7deg);
+        }
+      }
+      @media (max-width: 700px) {
+        .wrap {
+          width: calc(100% - 38px);
+        }
+        header nav {
+          display: none;
+        }
+        header > a {
+          font-size: 10px;
+        }
+        .hero {
+          min-height: 680px;
+        }
+        .hero h1 {
+          font-size: clamp(65px, 13vw, 100px);
+        }
+        .hero-art {
+          width: 108%;
+          right: -42%;
+          opacity: 0.55;
+        }
+        .section {
+          padding: 85px 0;
+        }
+        .split {
+          grid-template-columns: 1fr;
+        }
+        .workcards {
+          grid-template-columns: 1fr;
+        }
+        .workcards article > div {
+          height: 280px;
+        }
+        .end h2 {
+          font-size: 57px;
+        }
+        footer {
+          flex-direction: column;
+          gap: 12px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <strong>modus<span>®</span></strong>
+        <nav>
+          <a href="#studio">Studio</a><a href="#work">Work</a
+          ><a href="#contact">Contact</a>
+        </nav>
+        <a href="#contact">LET'S CONNECT ↗</a>
+      </header>
+    </div>
+    <section class="hero">
+      <div class="hero-art"></div>
+      <div class="wrap hero-copy">
+        <span class="eyebrow">INDEPENDENT CREATIVE STUDIO / 2026</span>
+        <h1>Make<br />some <em>noise.</em></h1>
+        <p>
+          We craft bold digital ideas, visual identities and experiences
+          designed to stand apart. This is an interactive studio concept.
+        </p>
+        <a href="#work">SCROLL TO EXPLORE ↓</a>
+      </div>
+    </section>
+    <section id="studio" class="section">
+      <div class="wrap split">
+        <div>
+          <span class="eyebrow">01 / WHAT WE BELIEVE</span>
+          <h2>Ordinary?<br />Not our thing.</h2>
+        </div>
+        <div>
+          <p>
+            Modus is a speculative creative studio concept. We use a fearless
+            visual language, decisive typography and details that turn
+            interactions into a statement.
+          </p>
+          <p>
+            Explore this page to experience the combination of bold art
+            direction, responsive layouts and motion.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section id="work" class="section works">
+      <div class="wrap">
+        <span class="eyebrow">02 / SELECTED EXPERIMENTS</span>
+        <h2>Work in<br /><em>motion.</em></h2>
+        <div class="workcards">
+          <article>
+            <div></div>
+            <h3>Echo / 001</h3>
+            <p>EXPERIMENTAL DESIGN / 2026</p>
+          </article>
+          <article>
+            <div></div>
+            <h3>Soft Matter / 002</h3>
+            <p>DIGITAL EXPERIENCE / 2026</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="section end">
+      <div class="wrap">
+        <span class="eyebrow" style="color: #31546e"
+          >03 / THE NEXT PROJECT</span
+        >
+        <h2>Go beyond<br />the expected. ↗</h2>
+        <p>DEMONSTRATION ONLY — NOT A COMMERCIAL STUDIO.</p>
+        <a
+          href="#top"
+          onclick="
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return false;
+          "
+          >BACK TO TOP ↑</a
+        >
+      </div>
+    </section>
+    <div class="wrap">
+      <footer>
+        <b>modus® — Concept 2026</b
+        ><span>EXPERIÊNCIA DEMONSTRATIVA / SWORS DIGITAL</span>
+      </footer>
+    </div>
+  </body>
+</html>
